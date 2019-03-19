@@ -106,6 +106,9 @@ namespace VirtoCommerce.LiquidThemeEngine.Objects
         [DataMember]
         public CustomerReview[] CustomerReviews { get; set; }
 
+        [DataMember]
+        public double AverageProductRating { get; set; }
+
         /// <summary>
         /// The main product image 
         /// </summary>

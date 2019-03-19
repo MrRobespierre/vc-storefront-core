@@ -15,5 +15,29 @@ namespace VirtoCommerce.Storefront.Model.CustomerReviews
         public DateTime? ModifiedDate { get; set; }
         public string CreatedBy { get; set; }
         public string ModifiedBy { get; set; }
+
+        public int? ProductRating { get; set; }
+
+        public FavoritePropertyValue[] PropertyValues { get; set; }
+    }
+
+    public partial class FavoritePropertyValue : Entity
+    {
+        public string PropertyId { get; set; }
+
+        public FavoriteProperty Property { get; set; }
+
+        public string ReviewId { get; set; }
+
+        public int? Rating { get; set; }
+    }
+
+    public partial class FavoriteProperty : Entity
+    {
+        public string ProductId { get; set; }
+
+        public string PropertyId { get; set; }
+
+        public string Name { get; set; }
     }
 }

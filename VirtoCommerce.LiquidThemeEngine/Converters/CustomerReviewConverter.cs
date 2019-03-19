@@ -1,3 +1,5 @@
+using System.Linq;
+
 using VirtoCommerce.LiquidThemeEngine.Objects;
 using storefrontModel = VirtoCommerce.Storefront.Model.CustomerReviews;
 
@@ -21,7 +23,29 @@ namespace VirtoCommerce.LiquidThemeEngine.Converters
                 Content = item.Content,
                 CreatedDate = item.CreatedDate,
                 IsActive = item.IsActive,
-                ProductId = item.ProductId
+                ProductId = item.ProductId,
+                ProductRating = item.ProductRating,
+                PropertyValues = item.PropertyValues.Select(ToFavoritePropertyValue).ToArray()
+            };
+        }
+
+        public virtual FavoritePropertyValue ToFavoritePropertyValue(storefrontModel.FavoritePropertyValue item)
+        {
+            return new FavoritePropertyValue
+            {
+                ReviewId = item.ReviewId,
+                Property = ToFavoriteProperty(item.Property),
+                Rating = item.Rating
+            };
+        }
+
+        public virtual FavoriteProperty ToFavoriteProperty(storefrontModel.FavoriteProperty item)
+        {
+            return new FavoriteProperty
+            {
+                ProductId = item.ProductId,
+                PropertyId = item.PropertyId,
+                Name = item.Name
             };
         }
     }

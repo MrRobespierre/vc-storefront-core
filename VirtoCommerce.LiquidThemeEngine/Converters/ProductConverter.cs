@@ -95,6 +95,7 @@ namespace VirtoCommerce.LiquidThemeEngine.Converters
             if (product.CustomerReviews != null)
             {
                 result.CustomerReviews = product.CustomerReviews.Select(x => x.ToShopifyModel()).ToArray();
+                result.AverageProductRating = product.AverageProductRating;
             }
 
             result.FeaturedImage = product.PrimaryImage?.ToShopifyModel();

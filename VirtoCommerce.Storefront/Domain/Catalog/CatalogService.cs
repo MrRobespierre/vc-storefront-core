@@ -113,6 +113,7 @@ namespace VirtoCommerce.Storefront.Domain
                     if (workContext.CurrentStore.CustomerReviewsEnabled)
                     {
                         taskList.Add(LoadProductCustomerReviewsAsync(allProducts, workContext));
+                        taskList.Add(LoadAverageProductRatingAsync(allProducts));
                     }
 
                     await Task.WhenAll(taskList.ToArray());
@@ -397,6 +398,14 @@ namespace VirtoCommerce.Storefront.Domain
                 }, 1, CustomerReviewSearchCriteria.DefaultPageSize);
             }
             return Task.CompletedTask;
+        }
+
+        protected virtual async Task LoadAverageProductRatingAsync(IEnumerable<Product> products)
+        {
+            foreach (var product in products)
+            {
+                product.AverageProductRating = await _customerReviewService.GetAverageProductRatingAsync(product.Id);
+            }
         }
 
         protected virtual void EstablishLazyDependenciesForCategories(IEnumerable<Category> categories)

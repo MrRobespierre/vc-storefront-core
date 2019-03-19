@@ -42,5 +42,11 @@ namespace VirtoCommerce.Storefront.Domain
                                                          criteria.PageNumber, criteria.PageSize, result.TotalCount.Value);
             });
         }
+
+        public async Task<double> GetAverageProductRatingAsync(string productId)
+        {
+            var result = await _customerReviewsApi.GetAverageProductRatingWithHttpMessagesAsync(productId);
+            return result.Body.Rating ?? 0;
+        }
     }
 }

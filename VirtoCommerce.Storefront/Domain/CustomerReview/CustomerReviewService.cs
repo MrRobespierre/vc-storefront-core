@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
@@ -47,6 +48,12 @@ namespace VirtoCommerce.Storefront.Domain
         {
             var result = await _customerReviewsApi.GetAverageProductRatingWithHttpMessagesAsync(productId);
             return result.Body.Rating ?? 0;
+        }
+
+        public async Task<AveragePropertyRating[]> GetAveragePropertyRatingsAsync(string productId)
+        {
+            var result = await _customerReviewsApi.GetAveragePropertyRatingsWithHttpMessagesAsync(productId);
+            return result.Body.Select(x => x.ToAveragePropertyRating()).ToArray();
         }
     }
 }

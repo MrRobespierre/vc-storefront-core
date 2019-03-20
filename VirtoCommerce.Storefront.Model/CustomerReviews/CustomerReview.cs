@@ -40,4 +40,11 @@ namespace VirtoCommerce.Storefront.Model.CustomerReviews
 
         public string Name { get; set; }
     }
+
+    public partial class AveragePropertyRating
+    {
+        public FavoriteProperty Property { get; set; }
+
+        public double? Rating { get; set; }
+    }
 }

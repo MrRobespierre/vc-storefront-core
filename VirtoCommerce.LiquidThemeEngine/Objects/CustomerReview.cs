@@ -30,6 +30,7 @@ namespace VirtoCommerce.LiquidThemeEngine.Objects
         public FavoritePropertyValue[] PropertyValues { get; set; }
     }
 
+    [DataContract]
     public class FavoritePropertyValue : Drop
     {
         [DataMember]
@@ -42,6 +43,7 @@ namespace VirtoCommerce.LiquidThemeEngine.Objects
         public int? Rating { get; set; }
     }
 
+    [DataContract]
     public class FavoriteProperty : Drop
     {
         [DataMember]
@@ -52,5 +54,15 @@ namespace VirtoCommerce.LiquidThemeEngine.Objects
 
         [DataMember]
         public string Name { get; set; }
+    }
+
+    [DataContract]
+    public class AveragePropertyRating : Drop
+    {
+        [DataMember]
+        public FavoriteProperty Property { get; set; }
+
+        [DataMember]
+        public double? Rating { get; set; }
     }
 }

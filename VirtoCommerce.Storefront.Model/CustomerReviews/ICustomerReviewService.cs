@@ -9,5 +9,7 @@ namespace VirtoCommerce.Storefront.Model.CustomerReviews
         Task<IPagedList<CustomerReview>> SearchReviewsAsync(CustomerReviewSearchCriteria criteria);
         
         Task<double> GetAverageProductRatingAsync(string productId);
+
+        Task<AveragePropertyRating[]> GetAveragePropertyRatingsAsync(string productId);
     }
 }

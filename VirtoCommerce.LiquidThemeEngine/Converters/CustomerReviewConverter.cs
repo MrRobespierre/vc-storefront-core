@@ -48,5 +48,14 @@ namespace VirtoCommerce.LiquidThemeEngine.Converters
                 Name = item.Name
             };
         }
+
+        public virtual AveragePropertyRating ToAveragePropertyRating(storefrontModel.AveragePropertyRating item)
+        {
+            return new AveragePropertyRating
+            {
+                Rating = item.Rating,
+                Property = ToFavoriteProperty(item.Property)
+            };
+        }
     }
 }

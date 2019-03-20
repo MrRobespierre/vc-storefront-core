@@ -114,6 +114,7 @@ namespace VirtoCommerce.Storefront.Domain
                     {
                         taskList.Add(LoadProductCustomerReviewsAsync(allProducts, workContext));
                         taskList.Add(LoadAverageProductRatingAsync(allProducts));
+                        taskList.Add(LoadAveragePropertyRatingsAsync(allProducts));
                     }
 
                     await Task.WhenAll(taskList.ToArray());
@@ -405,6 +406,14 @@ namespace VirtoCommerce.Storefront.Domain
             foreach (var product in products)
             {
                 product.AverageProductRating = await _customerReviewService.GetAverageProductRatingAsync(product.Id);
+            }
+        }
+
+        protected virtual async Task LoadAveragePropertyRatingsAsync(IEnumerable<Product> products)
+        {
+            foreach (var product in products)
+            {
+                product.AveragePropertyRatings = await _customerReviewService.GetAveragePropertyRatingsAsync(product.Id);
             }
         }
 

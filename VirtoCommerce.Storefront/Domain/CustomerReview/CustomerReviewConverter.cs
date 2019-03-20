@@ -50,6 +50,15 @@ namespace VirtoCommerce.Storefront.Domain.CustomerReview
             };
         }
 
+        public static AveragePropertyRating ToAveragePropertyRating(this reviewDto.AveragePropertyRating itemDto)
+        {
+            return new AveragePropertyRating
+            {
+                Rating = itemDto.Rating,
+                Property = itemDto.FavoriteProperty.ToFavoriteProperty()
+            };
+        }
+
         public static reviewDto.CustomerReviewSearchCriteria ToSearchCriteriaDto(this CustomerReviewSearchCriteria criteria)
         {
             var result = new reviewDto.CustomerReviewSearchCriteria

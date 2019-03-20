@@ -18,6 +18,7 @@ namespace VirtoCommerce.LiquidThemeEngine.Objects
         {
             Variants = new List<Variant>();
             Properties = new List<ProductProperty>();
+            AveragePropertyRatings = new AveragePropertyRating[0];
         }
 
         /// <summary>
@@ -108,6 +109,9 @@ namespace VirtoCommerce.LiquidThemeEngine.Objects
 
         [DataMember]
         public double AverageProductRating { get; set; }
+
+        [DataMember]
+        public AveragePropertyRating[] AveragePropertyRatings { get; set; }
 
         /// <summary>
         /// The main product image 

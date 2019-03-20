@@ -22,6 +22,7 @@ namespace VirtoCommerce.Storefront.Model.Catalog
             Descriptions = new List<EditorialReview>();
             Discounts = new List<Discount>();
             TaxDetails = new List<TaxDetail>();
+            AveragePropertyRatings = new List<AveragePropertyRating>();
         }
 
         public Product(Currency currency, Language language)
@@ -222,6 +223,8 @@ namespace VirtoCommerce.Storefront.Model.Catalog
         public IMutablePagedList<CustomerReview> CustomerReviews { get; set; }
 
         public double AverageProductRating { get; set; }
+
+        public IList<AveragePropertyRating> AveragePropertyRatings { get; set; }
 
         /// <summary>
         /// Current product price

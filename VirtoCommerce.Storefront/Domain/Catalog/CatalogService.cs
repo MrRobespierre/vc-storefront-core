@@ -394,6 +394,7 @@ namespace VirtoCommerce.Storefront.Domain
                         PageNumber = pageNumber,
                         PageSize = pageSize,
                         Sort = SortInfo.ToString(sortInfos),
+                        IsActive = true
                     };
                     return _customerReviewService.SearchReviews(criteria);
                 }, 1, CustomerReviewSearchCriteria.DefaultPageSize);

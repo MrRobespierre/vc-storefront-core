@@ -27,6 +27,24 @@ namespace VirtoCommerce.Storefront.Domain.CustomerReview
             return result;
         }
 
+        public static reviewDto.CustomerReview ToCustomerReviewDto(this Model.CustomerReviews.CustomerReview item)
+        {
+            return new reviewDto.CustomerReview
+            {
+                Id = item.Id,
+                AuthorNickname = item.AuthorNickname,
+                Content = item.Content,
+                CreatedBy = item.CreatedBy,
+                CreatedDate = item.CreatedDate,
+                IsActive = item.IsActive,
+                ModifiedBy = item.ModifiedBy,
+                ModifiedDate = item.ModifiedDate,
+                ProductId = item.ProductId,
+                ProductRating = item.ProductRating,
+                PropertyValues = item.PropertyValues.Select(x => x.ToFavoritePropertyValueDto()).ToArray()
+            };
+        }
+
         public static FavoritePropertyValue ToFavoritePropertyValue(this reviewDto.FavoritePropertyValue itemDto)
         {
             return new FavoritePropertyValue
@@ -39,6 +57,18 @@ namespace VirtoCommerce.Storefront.Domain.CustomerReview
             };
         }
 
+        public static reviewDto.FavoritePropertyValue ToFavoritePropertyValueDto(this FavoritePropertyValue item)
+        {
+            return new reviewDto.FavoritePropertyValue
+            {
+                Id = item.Id,
+                PropertyId = item.PropertyId,
+                ReviewId = item.ReviewId,
+                Rating = item.Rating,
+                Property = item.Property.ToFavoritePropertyDto()
+            };
+        }
+
         public static FavoriteProperty ToFavoriteProperty(this reviewDto.FavoriteProperty itemDto)
         {
             return new FavoriteProperty
@@ -47,6 +77,17 @@ namespace VirtoCommerce.Storefront.Domain.CustomerReview
                 Name = itemDto.Name,
                 PropertyId = itemDto.PropertyId,
                 ProductId = itemDto.ProductId
+            };
+        }
+
+        public static reviewDto.FavoriteProperty ToFavoritePropertyDto(this FavoriteProperty item)
+        {
+            return new reviewDto.FavoriteProperty
+            {
+                Id = item.Id,
+                Name = item.Name,
+                PropertyId = item.PropertyId,
+                ProductId = item.ProductId
             };
         }
 
